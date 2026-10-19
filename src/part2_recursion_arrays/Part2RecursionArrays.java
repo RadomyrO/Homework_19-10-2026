@@ -1,0 +1,54 @@
+package part2_recursion_arrays;
+
+import java.util.Arrays;
+
+/**
+ * Part 2. Recursion and arrays.
+ */
+public class Part2RecursionArrays {
+
+    public static void main(String[] args) {
+        int[] array = {3, 7, 1, 7, 9, 2, 7, 5};
+        System.out.println("Array: " + Arrays.toString(array));
+
+        // Part 2.1 Print array elements
+        System.out.println("\nPart 2.1. printArray(array, 0):");
+        printArray(array, 0);
+        System.out.println();
+
+        // Part 2.2 Sum of array elements
+        System.out.println("\nPart 2.2. arraySum(array, 0):");
+        System.out.println("Sum = " + arraySum(array, 0));
+
+        // Part 2.3 Count elements equal to a given value
+        int what = 7;
+        System.out.println("\nPart 2.3. findCountInArray(array, " + what + ", 0):");
+        System.out.println("Count of " + what + " = " + findCountInArray(array, what, 0));
+    }
+
+    // Part 2.1 Print element i, then recurse for the rest of the array
+    static void printArray(int[] array, int i) {
+        if (i >= array.length) {    // base case: past the last element
+            return;
+        }
+        System.out.print(array[i] + " ");
+        printArray(array, i + 1);
+    }
+
+    // Part 2.2 Sum = current element + sum of the rest
+    static int arraySum(int[] array, int i) {
+        if (i >= array.length) {    // base case: empty rest has sum 0
+            return 0;
+        }
+        return array[i] + arraySum(array, i + 1);
+    }
+
+    // Part 2.3 Count = (1 if current element matches, else 0) + count in the rest
+    static int findCountInArray(int[] array, int what, int i) {
+        if (i >= array.length) {    // base case: nothing left to check
+            return 0;
+        }
+        int current = (array[i] == what) ? 1 : 0;
+        return current + findCountInArray(array, what, i + 1);
+    }
+}
