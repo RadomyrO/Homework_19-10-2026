@@ -11,17 +11,17 @@ public class Part1Recursion {
     public static void main(String[] args) {
         int n = 9;
 
-        // Part 1.1 Print numbers backward: 9 8 7 6 5 4 3 2 1
+        // Part 1.1 
         System.out.println("Part 1.1. printNumberBackward(" + n + "):");
         printNumberBackward(n);
         System.out.println();
 
-        // Part 1.2 Print numbers forward: 1 2 3 4 5 6 7 8 9
+        // Part 1.2 
         System.out.println("\nPart 1.2. printNumber(" + n + "):");
         printNumber(n);
         System.out.println();
 
-        // Part 1.3 Recursion without base case -> StackOverflowError
+        // Part 1.3 
         System.out.println("\nPart 1.3. infiniteRecursion():");
         try {
             infiniteRecursion();
@@ -31,25 +31,25 @@ public class Part1Recursion {
         }
     }
 
-    // Part 1.1 Print n first, then recurse with n - 1
+    // Part 1.1 
     static void printNumberBackward(int n) {
-        if (n < 1) {            // base case
+        if (n < 1) {            
             return;
         }
         System.out.print(n + " ");
         printNumberBackward(n - 1);
     }
 
-    // Part 1.2 Recurse with n - 1 first, then print n on the way back
+    // Part 1.2 
     static void printNumber(int n) {
-        if (n < 1) {            // base case
+        if (n < 1) {            
             return;
         }
         printNumber(n - 1);
         System.out.print(n + " ");
     }
 
-    // Part 1.3 No base case: every call makes another call until the stack is full
+    // Part 1.3 
     static void infiniteRecursion() {
         depth++;
         infiniteRecursion();
